@@ -49,3 +49,31 @@ int main() {
     
     return 0;
 }
+
+/*
+Approach Second
+*/
+
+  int findPlatform(vector<int>& arr, vector<int>& dep) {
+        sort(arr.begin(),arr.end());
+        sort(dep.begin(),dep.end());
+        
+        int at_max_total_platform_needed = 1;
+        int result = 1;
+        int i=1;
+        int j=0;
+        int n=arr.size();
+        
+        while(i<n && j<n){
+         if(arr[i]<=dep[j]){
+            at_max_total_platform_needed++;
+            i++;
+         }    
+         else{
+             at_max_total_platform_needed--;
+             j++;
+         }
+         result = max(result,at_max_total_platform_needed);
+        }
+        return result;
+    }
